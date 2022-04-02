@@ -11,6 +11,16 @@ class Image(models.Model):
     caption = models.CharField(max_length=200,blank=True)
     image = models.ImageField(upload_to = 'images/')
 
+    def __str__(self):
+        return self.name
+
+    def save_image(self):
+        return self.save()
+    
+    @classmethod
+    def delete_image(cls,id):
+        return cls.objects.filter(id = id).delete()
+
 
 
 class Profile(models.Model):
