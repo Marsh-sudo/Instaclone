@@ -16,8 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.contrib.auth import views
+from instagram import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('instagram.urls')),
+    path('tinymce/',include('tinymce.urls')),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/register/',views.register, name='register'),
+
 ]
