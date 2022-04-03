@@ -24,8 +24,34 @@ class Image(models.Model):
 
 
 class Profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
     profile_pic = models.ImageField(upload_to='images/',default='no-image')
     bio = models.TextField(max_length=200,blank=True)
     name = models.CharField(blank=True,max_length=100)
 
+    @classmethod
+    def search_by_profile(cls,search_term):
+        user = cls.objects.filter(profile_icontains=search_term)
+        return user
 
+
+class Comments(models.Model):
+    comment = models.TextField(max_length = 300)
+    image = models.ForeignKey(Image,null=True, on_delete=models.CASCADE,related_name='comments')
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='comments')
+    comment_date = models.DateTimeField(auto_now_add=True) 
+    
+    
+    class Meta:
+        ordering = ["-comment_date"]
+
+
+    def __str__(self):
+        return f'{self.user.name} Image'
+
+class Post(models.Model):
+    Post_caption = models.CharField(max_length=200,blank=True)
+    Post_image = models.ImageField(upload_to='images/', default = 'no-image')
+
+    def __str__(self):
+        return self.Post_image
