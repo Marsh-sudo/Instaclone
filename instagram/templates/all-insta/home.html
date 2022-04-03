@@ -1,0 +1,92 @@
+{%extends 'all-insta/base.html'%}
+{% load bootstrap3 %}
+{% load crispy_forms_tags %}
+{% block content %}
+{{ block.super }}
+
+<!-- <div class="container">
+    <div class="row">
+        <div  style="justify-content: center;">
+            {% for post in posts%}
+                <img class="card-img-top" src="{{post.image.url}}" alt="" style="height: 60%; width: 50%;">
+
+
+        </div>
+    </div>
+    {%endfor%} -->
+
+    <div class="container mt-4">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="modal fade" id="post-upload" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Upload Image</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <button class="btn btn-sm btn-info">Post</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" data-dismiss="modal">
+                                        Close
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-7">
+                <button class="btn btn-sm mb-4 ml-2 btn-outline-secondary" type="button"  data-toggle="modal" data-target="#post-upload" >
+                    <i class="fas fa-upload"></i> Upload Image
+                </button>
+            {%for post in posts%}
+            <div class="card mb-4">
+                  
+                <img class="card-img-top" src="{{post.image.url}}" alt=" "></a>
+                <div class="card-body">
+                <span>
+                    <a href=""></a><span
+                            style="font-size: 1.3em;"><i class="far fa-heart text-dark"></i></span>
+                    </a>
+                </span>
+                <span>
+                    <span
+                            style="font-size: 1.3em;"><i class="far fa-comment text-dark"></i></span>
+                    </a>
+                </span><br>
+                <span class="ml-1 view" style="font-weight: bolder;" >{{post.likes}} likes</span><br>
+                <span class="ml-1"><span class="font-weight-bold">{{post.user}}</span> {{post.caption}}</span><br>
+                <a  href="#" class="ml-1 text-muted view">View all comments</a><br><br>
+                <small class="ml-1 text-muted mt-2">{{post.pub_date|timesince|upper}} AGO </small>
+                </div>
+            </div>
+            {%endfor%}
+            </div>
+            <!-- <div class="col-md-1"></div> -->
+           
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        {% autoescape on %}
+        {{image.post| safe}}
+        {% endautoescape %}
+    </div>
+</div>
+
+
+
+{%endblock%}
