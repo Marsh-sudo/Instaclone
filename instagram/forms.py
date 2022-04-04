@@ -6,8 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 class NewPostForm(forms.ModelForm):
     class Meta:
-        model = Image
-        fields = ('image',)
+        model = Post
+        fields = ('Post_image',)
 
 
 class UserRegisterForm(UserCreationForm):
