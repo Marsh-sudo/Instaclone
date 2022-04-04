@@ -26,7 +26,7 @@ class Image(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
     profile_pic = models.ImageField(upload_to='images/',default='no-image')
-    bio = models.TextField(max_length=200,blank=True)
+    bio = models.TextField(max_length=201,blank=True)
     name = models.CharField(blank=True,max_length=100)
 
     @classmethod
@@ -36,7 +36,7 @@ class Profile(models.Model):
 
 
 class Comments(models.Model):
-    comment = models.TextField(max_length = 300)
+    comment = models.TextField(max_length = 301)
     image = models.ForeignKey(Image,null=True, on_delete=models.CASCADE,related_name='comments')
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='comments')
     comment_date = models.DateTimeField(auto_now_add=True) 
@@ -50,8 +50,14 @@ class Comments(models.Model):
         return f'{self.user.name} Image'
 
 class Post(models.Model):
-    Post_caption = models.CharField(max_length=200,blank=True)
+    Post_caption = models.CharField(max_length=300,blank=True)
     Post_image = models.ImageField(upload_to='images/', default = 'no-image')
+
+    @classmethod
+    def display_image(cls):
+        posts = cls.objects.all()
+        return posts
+    
 
     def __str__(self):
         return self.Post_image
