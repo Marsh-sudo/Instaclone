@@ -18,5 +18,5 @@ This project was Created by:
   -[Marsh-sudo](https://github.com/marsh-sudo/)
 
 # License
-This project is licensed under Apache 2.0
+This project is licensed under Apache 2.0.
   
