@@ -9,6 +9,8 @@ urlpatterns = [
     re_path('^new/image$',views.new_post,name = 'new-post'),
     re_path('search/',views.search_results,name='search_results'),
     re_path('like/<id>',views.like,name='like'),
+    re_path('profile/',views.profile,name='profile')
+    # re_path('accounts/login/',views.login_user,name="login"),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
