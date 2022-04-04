@@ -1,0 +1,35 @@
+{% extends 'all-insta/base.html'%}
+{% block content %}
+
+<div class="container container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="#" alt="">
+        </div>
+        
+        <div class="col-md-8">
+            <div class="navbar-collapse" id="navbarSupporedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <h4>Username:</h4>
+                    </li>
+                    <li class="nav-item">
+                        <p>Followers:0</p>
+                    </li>
+                    <li class="nav-item">
+                        <p>Following:0</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+     {% for images in image%}
+     <div class="row">
+         <div class="col-md-3 single_portfolio_text">
+             <img src="{{images.image.url}}" alt="" class="img-responsive" style="height: 40%; width: 40%;">
+         </div>
+     </div>
+     {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

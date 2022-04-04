@@ -11,6 +11,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
               <a href="{% url 'home' %}">
+                <img src="https://img.icons8.com/color/344/instagram-new--v1.png" alt="" style="height: 20%; width: 20%;">
                 <img src="https://raw.githubusercontent.com/xamaan585/InstaClone/master/instagram/static/photos/logo1.png" alt="">
               </a>
             </div>
@@ -33,29 +34,12 @@
 
           
             <div class="col-sm-6 col-md-6">
-                {% if user.is_authenticated %}
-                <ul>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
-                              <span class="caret"></span>
-                          </a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li>
-                        <a href="{%url 'home'%}">Home</a>
-                      </li>
-                      <li>
-                        <a href="{%url 'new-post'%}">Create Post</a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-                {% else %}
-                <li>
-                  <a class='btn btn-default' href="/accounts/login">Login</a>
-                </li>
-    
-                {% endif %}
-              </div>
+             <ul>
+               <li>
+                 <a href="{% url 'profile'%}" style="text-decoration: none; font-size: x-large; color: black;">Profile</a>
+               </li>
+             </ul>
+            </div>
         </div>
     </nav>
 </body>
