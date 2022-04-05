@@ -28,7 +28,7 @@ def index(request):
 def new_post(request):
     current_user = request.user
     if request.method == 'POST':
-        form = NewPostForm(request.POST,request.FILES)
+        form = NewPostForm(request.POST, request.FILES)
         if form.is_valid():
             # form.save()
             

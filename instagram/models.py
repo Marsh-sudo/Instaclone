@@ -56,7 +56,7 @@ class Post(models.Model):
 
     @classmethod
     def display_image(cls):
-        posts = cls.objects.all()
+        posts  = cls.objects.all()
         return posts
     
 

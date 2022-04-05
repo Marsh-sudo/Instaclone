@@ -6,20 +6,11 @@ from django.contrib.auth.models import User
 class ImageTestCase(TestCase):
     def setUp(self):
 
-        self.user = User.objects("biggie")
+        
+        self.photo = Image(caption="posting")
 
-        self.my_profile = Profile(profile_pic='image.png',bio="my bio",user=self.user)
-        self.my_profile.save()
-
-        self.photo = Image(pic='image.png', caption="posting", profile=self.my_profile)
-
-    def test_instance_true(self):
-        self.photo.save()
+    def test_instance(self):
         self.assertTrue(isinstance(self.photo, Image))
 
-    def test_save_image(self):
-        self.photo.save()
-        images = Image.objects.all()
-        self.assertTrue(len(images) == 1)
-
+    
 

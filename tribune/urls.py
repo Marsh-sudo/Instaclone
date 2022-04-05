@@ -21,7 +21,7 @@ from instagram import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('instagram.urls')),
-    path('tinymce/',include('tinymce.urls')),
+    path('tinymce/',include('tinymce.urls') ),
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     
