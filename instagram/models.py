@@ -36,7 +36,7 @@ class Profile(models.Model):
 
 
 class Comments(models.Model):
-    comment = models.TextField(max_length = 301)
+    comment = models.TextField(max_length = 303)
     image = models.ForeignKey(Image,null=True, on_delete=models.CASCADE,related_name='comments')
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='comments')
     comment_date = models.DateTimeField(auto_now_add=True) 
@@ -50,7 +50,7 @@ class Comments(models.Model):
         return f'{self.user.name} Image'
 
 class Post(models.Model):
-    Post_caption = models.CharField(max_length=300,blank=True)
+    Post_caption = models.CharField(max_length=310,blank=True)
     Post_image = models.ImageField(upload_to='images/', default = 'no-image')
 
     @classmethod

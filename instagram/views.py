@@ -4,7 +4,7 @@ import datetime as dt
 from django.contrib.auth.models import User
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Image,Comments,Profile
+from .models import Image,Comments,Profile,Post
 from .forms import UserRegisterForm,NewPostForm,UpdateUserForm,UpdateUserProfileForm
 from django.urls import reverse
 from django.contrib.auth import authenticate,login
@@ -18,10 +18,11 @@ def index(request):
     posts = Image.objects.all()
     all_users = User.objects.exclude(id=request.user.id)
     current_user = request.user
+    items = Post.display_image()
 
     
 
-    return render (request, 'all-insta/home.html',{"posts":posts,"all_users":all_users,"current_user":current_user})
+    return render (request, 'all-insta/home.html',{"posts":posts,"all_users":all_users,"current_user":current_user,"items":items})
 
 
 def new_post(request):

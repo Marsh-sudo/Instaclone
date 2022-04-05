@@ -46,9 +46,34 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-7">
-                <button class="btn btn-sm mb-4 ml-2 btn-outline-secondary" type="button"  data-toggle="modal" data-target="#post-upload" href="{% url 'new-post'%}">
+                <button class="btn btn-sm mb-4 ml-2 btn-outline-secondary" type="button"  data-toggle="modal" data-target="#post-upload" href="{% url 'new-post' %}">
                     <i class="fas fa-upload"></i>Upload Image
                 </button>
+            <!--Posting image-->
+            {% for photo in items%}
+            <div class="card mb-4">
+                  
+                <img class="card-img-top" src="{{photo.Post_image.url}}" alt=" "></a>
+                <div class="card-body">
+                <span>
+                    <a href=""></a><span
+                            style="font-size: 1.3em;"><i class="far fa-heart text-dark"></i></span>
+                    </a>
+                </span>
+                <span>
+                    <span
+                            style="font-size: 1.3em;"><i class="far fa-comment text-dark"></i></span>
+                    </a>
+                </span><br>
+                <span class="ml-1 view" style="font-weight: bolder;" >{{photo.likes}} likes</span><br>
+                <span class="ml-1"><span class="font-weight-bold">{{photo.user}}</span> {{photo.caption}}</span><br>
+                <a  href="#" class="ml-1 text-muted view">View all comments</a><br><br>
+                <small class="ml-1 text-muted mt-2">{{photo.pub_date|timesince|upper}} AGO </small>
+                </div>
+            </div>
+            {%endfor%}
+
+            
             {%for post in posts%}
             <div class="card mb-4">
                   
