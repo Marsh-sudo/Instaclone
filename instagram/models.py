@@ -26,7 +26,7 @@ class Image(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
     profile_pic = models.ImageField(upload_to='images/',default='no-image')
-    bio = models.TextField(max_length=201,blank=True)
+    bio = models.TextField(max_length=251,blank=True)
     name = models.CharField(blank=True,max_length=100)
 
     @classmethod
@@ -52,6 +52,7 @@ class Comments(models.Model):
 class Post(models.Model):
     Post_caption = models.CharField(max_length=310,blank=True)
     Post_image = models.ImageField(upload_to='images/', default = 'no-image')
+    pub_date = models.DateField(auto_now_add=True)
 
     @classmethod
     def display_image(cls):
