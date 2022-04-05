@@ -8,7 +8,7 @@ class Image(models.Model):
     name = models.CharField(max_length=100,blank=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='images')
     pub_date = models.DateField(auto_now_add=True)
-    caption = models.CharField(max_length=200,blank=True)
+    caption = models.CharField(max_length=250,blank=True)
     image = models.ImageField(upload_to = 'images/')
 
     def __str__(self):
@@ -26,7 +26,7 @@ class Image(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
     profile_pic = models.ImageField(upload_to='images/',default='no-image')
-    bio = models.TextField(max_length=251,blank=True)
+    bio = models.TextField(max_length=250,blank=True)
     name = models.CharField(blank=True,max_length=100)
 
     @classmethod
@@ -36,7 +36,7 @@ class Profile(models.Model):
 
 
 class Comments(models.Model):
-    comment = models.TextField(max_length = 303)
+    comment = models.TextField(max_length = 350)
     image = models.ForeignKey(Image,null=True, on_delete=models.CASCADE,related_name='comments')
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='comments')
     comment_date = models.DateTimeField(auto_now_add=True) 

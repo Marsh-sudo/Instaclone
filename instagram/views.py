@@ -24,7 +24,7 @@ def index(request):
 
     return render (request, 'all-insta/home.html',{"posts":posts,"all_users":all_users,"current_user":current_user,"items":items})
 
-
+@login_required(login_url='/accounts/register/')
 def new_post(request):
     current_user = request.user
     if request.method == 'POST':
